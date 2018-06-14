@@ -30,12 +30,15 @@ public class Calculadora extends AbstractVerticle {
         router.get("/api/resta").handler(this::resta);
         router.get("/api/multiplica").handler(this::multiplica);
         router.get("/api/divide").handler(this::divide);
+	router.get("/api/cuenta").handler(this::cuenta);
+
         router.route("/*").handler(StaticHandler.create("assets")); // para invocar asi: http://localhost:8080/index.html
-        System.out.println("-------------> " + router.route("/*"));
+
+
 
         // Create the HTTP server and pass the "accept" method to the request handler.
         vertx.createHttpServer().requestHandler(router::accept).listen(
-                config().getInteger("http.port", 9090), result -> {
+                config().getInteger("http.port", 8080), result -> {
             if (result.succeeded()) {
                 fut.complete();
             } else {
@@ -45,6 +48,17 @@ public class Calculadora extends AbstractVerticle {
 
         logger.info("Vertical iniciada !!!");
     }
+
+
+   private void cuenta(RoutingContext routingContext) {
+        HttpServerResponse response = routingContext.response();
+        HttpServerRequest request = routingContext.request();
+
+        String operandoA = request.getParam("mode");
+        String jsonResponse = factorialOperacion(operandoA);
+        response.setStatusCode(200).putHeader("content-type", "application/json; charset=utf-8").end(jsonResponse);
+    }
+
 
     private void suma(RoutingContext routingContext) {
         HttpServerResponse response = routingContext.response();
@@ -168,10 +182,61 @@ public class Calculadora extends AbstractVerticle {
         return Json.encodePrettily(resultado);
     }
 
-    public static void main(String[] args) {
+   //http://localhost:8081/api/cuenta?mode=5
+    private String factorialOperacion(String operandoA) {
 
-        System.out.println("HOLA");
+        int r = 0;
+	String resp = operandoA;
+	String mensaje = "";
+        int resultadoEntero = 0;
+   	Map<String, String> resultado = new HashMap<>();
 
+    
+
+   try {
+	r = Integer.parseInt(operandoA);
+
+	if(r >= 1 && r<= 10000000){
+	 /*while ( r!=0) {
+		r--;
+		resultadoEntero++;
+		
+		    }*/
+		long factorial=1L;
+		for(int i=r;i>0;i--) {
+
+			//factorial=factorial*i;
+			resultadoEntero++;
+
+		}
+	}else{r=-2;}
+
+        }catch (Exception e) {
+           r = -1;
+        }  
+          
+
+
+
+	if(r==-1){
+	mensaje="NO SE INGRESO UN NUMERO";
+	}else if(r==-2){
+	mensaje="EL NUMERO ESTA FUERA DE RANGO (NUMERO >1 && NUMERO 10000000)";
+	}else{
+	mensaje="CORRECTO";
+	}
+
+	
+  //5-4-3-2-1
+
+
+     
+        resultado.put("Número ingresado", ""+resp);
+        resultado.put("Digitos del factorial",""+resultadoEntero);
+	resultado.put("Mensaje", ""+mensaje);
+ 
+
+        return Json.encodePrettily(resultado);
     }
 
 }
