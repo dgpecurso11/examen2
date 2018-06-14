@@ -1,0 +1,146 @@
+
+
+ <!DOCTYPE html>
+ <html lang="en">
+   <head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <meta name="description" content="">
+     <meta name="author" content="">
+     <link rel="icon" href="../../favicon.ico">
+
+     <title>Curso microservicios</title>
+     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/jumbotron/">
+
+     <!-- Bootstrap core CSS -->
+     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
+
+     <!-- Custom styles for this template -->
+
+   </head>
+
+   <body>
+
+
+
+     <!-- Main jumbotron for a primary marketing message or call to action -->
+     <div class="jumbotron">
+       <div class="container">
+         <h1 class="display-3">Calculadora cientifica</h1>
+         <p></p>
+         <p><a class="btn btn-primary btn-lg alerta" href="#" role="button">Servicio</a></p>
+       </div>
+     </div>
+
+     <div class="container">
+       <!-- Example row of columns -->
+       <div class="row">
+         <div class="col-md-3">
+           <h2>SUMA</h2>
+
+
+          <form  action="http://192.168.2.11:9090/api/suma" method="get" target="x" name="suma">
+             <div class="form-group">
+               <label for="exampleInputEmail1">Número a</label>
+               <input type="text" class="form-control" id="a" aria-describedby="emailHelp" placeholder="Número a" name="a">
+             </div>
+             <div class="form-group">
+               <label for="exampleInputPassword1">Número b</label>
+               <input type="text" class="form-control" id="b" placeholder="Número b" name="b">
+             </div>
+
+             <button type="submit" class="btn btn-primary">Sumar</button>
+           </form>
+
+
+
+         </div>
+
+
+
+         <div class="col-md-3">
+           <h2>RESTA</h2>
+
+           <form  action="http://192.168.2.11:9090/api/resta" method="get" target="x" name="suma">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Número a</label>
+                <input type="text" class="form-control" id="a" aria-describedby="emailHelp" placeholder="Número a" name="a">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Número b</label>
+                <input type="text" class="form-control" id="b" placeholder="Número b" name="b">
+              </div>
+
+              <button type="submit" class="btn btn-primary">Resta</button>
+            </form>
+
+
+        </div>
+
+
+
+         <div class="col-md-3">
+              <h2>MULTIPLICA</h2>
+           <form  action="http://192.168.2.11:9090/api/multiplica" method="get" target="x" name="suma">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Número a</label>
+                <input type="text" class="form-control" id="a" aria-describedby="emailHelp" placeholder="Número a" name="a">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Número b</label>
+                <input type="text" class="form-control" id="b" placeholder="Número b" name="b">
+              </div>
+
+              <button type="submit" class="btn btn-primary">Multiplica</button>
+            </form>
+         </div>
+
+
+
+                  <div class="col-md-3">
+                       <h2>DIVIDE</h2>
+                    <form  action="http://192.168.2.11:9090/api/divide" method="get" target="x" name="suma">
+                       <div class="form-group">
+                         <label for="exampleInputEmail1">Número a</label>
+                         <input type="text" class="form-control" id="a" aria-describedby="emailHelp" placeholder="Número a" name="a">
+                       </div>
+                       <div class="form-group">
+                         <label for="exampleInputPassword1">Número b</label>
+                         <input type="text" class="form-control" id="b" placeholder="Número b" name="b">
+                       </div>
+
+                       <button type="submit" class="btn btn-primary">Divide</button>
+                     </form>
+                  </div>
+
+
+
+       </div>
+
+       <hr>
+
+       <footer>
+         <p>&copy; 2018</p>
+       </footer>
+     </div> <!-- /container -->
+
+
+     <!-- Bootstrap core JavaScript
+     ================================================== -->
+     <!-- Placed at the end of the document so the pages load faster -->
+     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+     <script src="https://v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js"></script>
+     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+     <script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+     <script>
+     $(document).ready(function(){
+         $(".alerta").click(function(){
+             alert("Hello, world!"+$(location).attr('href'));
+         });
+     });
+     </script>
+   </body>
+ </html>
