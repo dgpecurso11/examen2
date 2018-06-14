@@ -1,101 +1,57 @@
-# examen
+# examen 2
 Examen del curso básico de microservicios
 
-
------------------------------------------------------------------------------------------------------------------------------------
-OK
-1.- Crear repositorio llamado examen en github.
------------------------------------------------------------------------------------------------------------------------------------
-OK
-2.- Clonar el respo de gustavo Vertx.
------------------------------------------------------------------------------------------------------------------------------------
-3.- Crear 4 servicios REST del tipo GET, que tenga una clase llamada Calculadora con los 4 siguientes servicios:
-    -Suma
-    -Resta
-    -División
-    -Multiplicación
------------------------------------------------------------------------------------------------------------------------------------
-4.- Agregar pruebas unitarias para cada operación.
-
-result = sendGet("http://localhost:8081/api/suma?a=50&b=9");
- logger.info(result);
-
-result = sendGet("http://localhost:8081/api/resta?a=50&b=9");
- logger.info(result);
-
-result = sendGet("http://localhost:8081/api/multiplica?a=50&b=9");
- logger.info(result);
-
-result = sendGet("http://localhost:8081/api/divide?a=50&b=9");
- logger.info(result);
------------------------------------------------------------------------------------------------------------------------------------
-OK
-5.- Subir todo al repo examen.
-
-https://github.com/dgpecurso11/examen
 -----------------------------------------------------------------------------------------------------------------------------------
 
-6.- Poner un readme con todas las instruccioenes para correr el servidor Vertx desde un docker con java.
+Compilar examen 2
 
-#Compilar el proyexto examen con un docker, yo selecciones el kebblar/jdk18-utf8-debug-maven
-docker run -it -v /home/gustavo/curso-dgpe/examen/:/codigo kebblar/jdk18-utf8-debug-maven mvn -f /codigo clean package
+ docker run -it -v /home/gustavo/curso-dgpe/examen2/:/codigo kebblar/jdk18-utf8-debug-maven mvn -f /codigo clean package
 
+Levantar la vertical
 
-#Correr el jar con el docker kebblar/jdk18-utf8-debug-maven
-#Para probar entrar a la siguiente URL: 
-docker run -d -p 8081:8080 -v /home/gustavo/curso-dgpe/examen/:/codigo kebblar/jdk18-utf8-debug-maven java -jar /codigo/target/sample-1.0-SNAPSHOT-fat.jar
+docker run -d -p 6060:8080 -v /home/gustavo/curso-dgpe/examen2/:/codigo kebblar/jdk18-utf8-debug-maven java -jar /codigo/target/sample-1.0-SNAPSHOT-fat.jar
 
+Ruta
+http://192.168.1.155:6060/api/cuenta?mode=6
 
+Crear Dockerfile en el proyecto del vector
+Dockerfile
 
-PRUEBAS
-
-http://localhost:8081/api/suma?a=50&b=9
-http://localhost:8081/api/resta?a=50&b=9
-http://localhost:8081/api/multiplica?a=50&b=9
-http://localhost:8081/api/divide?a=50&b=9
-
-
------------------------------------------------------------------------------------------------------------------------------------
-OK
-7.- Escribir en el readme como seria el proceso para balancear 6 contenedores iguales al interior usando haproxy. 
-
-7.1.- Editar el siguiente archivo: sudo nano /etc/default/haproxy 
 ################################################################################
-# Defaults file for HAProxy
-#
-# This is sourced by both, the initscript and the systemd unit file, so do not
-# treat it as a shell script fragment.
-
-# Change the config file location if needed
-CONFIG="/etc/haproxy/haproxy.cfg"
-ENABLED=1
-# Add extra flags here, see haproxy(1) for a few options
-#EXTRAOPTS="-de -m 16"
+FROM kebblar/jdk18-utf8-debug-maven
+COPY ./target/sample-1.0-SNAPSHOT-fat.jar /javabin/sample-1.0-SNAPSHOT-fat.jar
+CMD java -jar /javabin/sample-1.0-SNAPSHOT-fat.jar
 ################################################################################
 
+Dockerizar vector
+docker build -t examen2 .
 
-7.2.- Editar el siguiente archivo: sudo nano /etc/haproxy/haproxy.cfg 
-################################################################################
+Correr imagen Docker creada
+docker run -it -d -p 4070:8080 examen2
 
+Verificar id del docker
+Docker ps
 
-frontend www
-        bind localhost:9090
-        default_backend site-backend
-backend site-backend
-        mode http
-        balance roundrobin
-        server lamp1 localhost:8081 check
-        server lamp2 localhost:8082 check
-        server lamp3 localhost:8083 check
-        server lamp1 localhost:8084 check
-        server lamp2 localhost:8085 check
-        server lamp3 localhost:8086 check
-################################################################################
+Commit del docker
+docker commit 4a83c3d20f9c dgpecurso11/examen2
+
+Rutas del proyecto examen2
+https://github.com/dgpecurso11/examen2
+
+https://hub.docker.com/r/dgpecurso11/examen2
 
 
-7.3- entrar a la siguinete url: http://localhost:9090/api/operacionGet?tipo=suma&a=5&b=9
-
------------------------------------------------------------------------------------------------------------------------------------
+Instalar rancher para escalarlo a tres servidores 
 
 
+$ sudo docker run -d --restart=unless-stopped -p 8080:8080 rancher/server:stable
 
+
+Creando el servicio del API en rancher
+Agregamos el nombre, descripción e imagen.
+Ruta del docker hub: 
+https://hub.docker.com/r/dgpecurso11/exame2
+Nombre de la imagen:
+dgpecurso11/examen2
+
+Despues agregamos 3 imagenes en puertos distintos del servicio del vector,  por ejemplo 8085,8086 y 8087
