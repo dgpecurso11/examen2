@@ -40,6 +40,8 @@ Commit del docker
 
 docker commit 4a83c3d20f9c dgpecurso11/examen2
 
+docker push dgpecurso11/examen2
+
 Rutas del proyecto examen2
 
 https://github.com/dgpecurso11/examen2
