@@ -27,36 +27,36 @@
       "all": {
         "min": "0",
         "max": "65535",
-        "mean": "56341.4",
-        "standardDeviation": "17917.9",
-        "kurtosis": "1.67396",
-        "skewness": "-1.83144"
+        "mean": "44803.2",
+        "standardDeviation": "25376.9",
+        "kurtosis": "-1.41306",
+        "skewness": "-0.62087"
       }
     },
     "channelStatistics": {
       "red": {
         "min": "0",
         "max": "65535",
-        "mean": "56275.2",
-        "standardDeviation": "18150.9",
-        "kurtosis": "1.7131",
-        "skewness": "-1.8384"
+        "mean": "46902",
+        "standardDeviation": "25733.9",
+        "kurtosis": "-1.10937",
+        "skewness": "-0.863748"
       },
       "green": {
         "min": "0",
         "max": "65535",
-        "mean": "56342.3",
-        "standardDeviation": "17768.3",
-        "kurtosis": "1.60646",
-        "skewness": "-1.81126"
+        "mean": "44406.6",
+        "standardDeviation": "24770.5",
+        "kurtosis": "-1.44887",
+        "skewness": "-0.555187"
       },
       "blue": {
         "min": "0",
         "max": "65535",
-        "mean": "56406.9",
-        "standardDeviation": "17832.2",
-        "kurtosis": "1.69187",
-        "skewness": "-1.84293"
+        "mean": "43100.9",
+        "standardDeviation": "25615.4",
+        "kurtosis": "-1.62552",
+        "skewness": "-0.438778"
       }
     },
     "renderingIntent": "Perceptual",
@@ -92,13 +92,13 @@
     "quality": 85,
     "orientation": "Undefined",
     "properties": {
-      "signature": "b034b235d08964f768f892b34c1018d5aae36b9f099a76e2c0a803ef544e08ca"
+      "signature": "5d2d5cde3a2909149dd58adcc261e4d33a2e1a3205d43b593b61a970c79febd4"
     },
     "tainted": true,
     "filesize": "0B",
     "numberPixels": "904K",
     "pixelsPerSecond": "18.07MB",
-    "userTime": "0.030u",
+    "userTime": "0.040u",
     "elapsedTime": "0:01.050",
     "version": "ImageMagick 6.9.7-4 Q16 x86_64 20170114 http://www.imagemagick.org"
   }

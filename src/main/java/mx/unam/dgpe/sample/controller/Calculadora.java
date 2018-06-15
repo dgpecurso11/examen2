@@ -188,9 +188,10 @@ public class Calculadora extends AbstractVerticle {
         int r = 0;
 	String resp = operandoA;
 	String mensaje = "";
+	String miRes = "";
         int resultadoEntero = 0;
    	Map<String, String> resultado = new HashMap<>();
-
+	long factorial=0;
     
 
    try {
@@ -202,10 +203,10 @@ public class Calculadora extends AbstractVerticle {
 		resultadoEntero++;
 		
 		    }*/
-		long factorial=1L;
+		factorial=1;
 		for(int i=r;i>0;i--) {
 
-			//factorial=factorial*i;
+			factorial=factorial*i;
 			resultadoEntero++;
 
 		}
@@ -229,10 +230,11 @@ public class Calculadora extends AbstractVerticle {
 	
   //5-4-3-2-1
 
-
+	miRes = Long.toString(factorial);
      
         resultado.put("Número ingresado", ""+resp);
-        resultado.put("Digitos del factorial",""+resultadoEntero);
+        resultado.put("factorial",""+factorial);
+        resultado.put("Digitos del factorial",""+miRes.length());
 	resultado.put("Mensaje", ""+mensaje);
  
 
